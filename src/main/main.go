@@ -4,11 +4,11 @@ import (
 	"Test12/src/dto"
 	"Test12/src/hi"
 	"fmt"
+	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"strings"
-	"text/template"
 	"time"
 )
 
@@ -36,7 +36,7 @@ func handle1(response http.ResponseWriter, request *http.Request) {
 	p := dto.Person{}
 	p.FirstName = "Saber"
 	p.LastName = "Azizi"
-	//p.Books = []string{"java", "C#", "php", "python", "C++", "C", "javaScript", "perl", "go"}
+	p.Books = []string{"java", "C#", "php", "python", "C++", "C", "javaScript", "perl", "go"}
 	err := templatePage.Execute(response, p)
 	if err != nil {
 		log.Fatalln(err)
