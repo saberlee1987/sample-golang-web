@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>person Page</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.css">
+    <link rel="stylesheet" href="/resources/css/home.css">
+</head>
+<body>
+<a href="/">Main Page</a>
+<div class="container">
+    <div class="row">
+        <form action="/addPerson" class="form-control" method="post">
+            <div class="form-group row">
+                <label for="firstName" class="col-sm-2 col-form-label"> firstName</label>
+                <div class="col-sm-10">
+                    <input type="text" id="firstName" name="firstName" placeholder="Enter FirstName">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="lastName" class="col-sm-2 col-form-label"> firstName</label>
+                <div class="col-sm-10">
+                    <input type="text" id="lastName" name="lastName" placeholder="Enter lastName">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="books" class="col-sm-2 col-form-label"> firstName</label>
+                <div class="col-sm-10">
+                    <textarea name="books" class="form-control" id="books" placeholder="Enter book each line"></textarea>
+                </div>
+            </div>
+
+            <input type="submit" value="Add Person">
+        </form>
+    </div>
+</div>
+
+<h4>List Persons</h4>
+{{if .persons}}
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>firstName</th>
+            <th>lastName</th>
+            <th>books</th>
+        </tr>
+
+        {{range $index,$element:=.persons}}
+            <tr>
+                <td>{{$element.FirstName}}</td>
+                <td>{{$element.LastName}}</td>
+                <td>
+                    {{range $i,$b:=$element.Books}}
+                        {{$b}} <br>
+                    {{end}}
+                </td>
+            </tr>
+        {{end}}
+    </table>
+{{ else}}
+    <p>Persons does not exist</p>
+{{end}}
+</body>
+</html>

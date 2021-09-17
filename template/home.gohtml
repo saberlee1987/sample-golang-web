@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<a href="/github">call http method with go</a>
+<a href="/personPage">Person Page</a>
+    <h3>Welcome to webApplication with golang</h3>
+    <h4>Welcome {{.FirstName}} {{.LastName}}</h4>
+    <h4>books </h4>
+    <ul>
+        {{if  .Books }}
+            {{range $index,$element := .Books }}
+                <li> {{$index}} - {{$element}} </li>
+            {{end}}
+        {{else}}
+            <p>books is empty</p>
+        {{end}}
+    </ul>
+</body>
+</html>
